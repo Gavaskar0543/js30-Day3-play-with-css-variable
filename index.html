@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>replit</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      :root {
+        --base: #ffc600;
+        --blur: 10px;
+        --spacing: 10px;
+      }
+      img {
+        padding: var(--spacing);
+        background: var(--base);
+        filter: blur(var(--blur));
+      }
+      h1 {
+        color: var(--base);
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd">
+      <h1>PlayingWithVariables</h1>
+    </nav>
+    <div class="controls">
+      <label for="spacing">spacing</label>
+      <input
+        type="range"
+        name="spacing"
+        min="0"
+        max="25"
+        value="10"
+        data-sizing="px"
+      />
+      <label for="Blur">Blur</label>
+      <input
+        type="range"
+        name="blur"
+        min="0"
+        max="25"
+        value="10"
+        data-sizing="px"
+      />
+
+      <label for="base">Color</label>
+      <input type="color" name="base" value="#ffc600" />
+    </div>
+    <img
+      src="https://images.pexels.com/photos/13077848/pexels-photo-13077848.jpeg?cs=srgb&dl=pexels-adrian-stancu-13077848.jpg&fm=jpg  "
+      class="img-fluid"
+      alt="Responsive image"
+    />
+
+    <script>
+      const inputs = document.querySelectorAll(".controls input");
+      console.log(inputs);
+
+      function maker() {
+        //dataset --DoM object
+        const suffix = this.dataset.sizing || "";
+        document.documentElement.style.setProperty(
+          `--${this.name}`,
+          this.value + suffix
+        );
+      }
+
+      inputs.forEach((input) => input.addEventListener("change", maker));
+      inputs.forEach((input) => input.addEventListener("mousemove", maker));
+    </script>
+  </body>
+</html>
